@@ -10,6 +10,6 @@
 <title>Home Page</title>
 </head>
 <body>
-    This is home Welcome!!!
+    This is home Welcome!!
 </body>
 </html>
