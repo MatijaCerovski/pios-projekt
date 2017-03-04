@@ -10,6 +10,6 @@
 <title>Home Page</title>
 </head>
 <body>
-    This is home Welcome!!! IntelliJ
+    This is HOME Welcome!!! IntelliJ
 </body>
 </html>
