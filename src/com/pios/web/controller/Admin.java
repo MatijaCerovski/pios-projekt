@@ -1,4 +1,4 @@
-package com.pios.controller;
+package com.pios.web.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ public class Admin {
 
     @GetMapping("/admin")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String paginationForm(Model model){
+    public String openAdmin(Model model){
 
         return "admin";
 

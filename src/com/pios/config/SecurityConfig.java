@@ -39,14 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                //.antMatchers("/home/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-                //.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .and().formLogin();
+                .and().formLogin()
                 //.loginPage("/login")
                 //.usernameParameter("username")
                 //.passwordParameter("password")
-                //.and().csrf()
-                //.and().exceptionHandling().accessDeniedPage("/403");
+                .and().csrf()
+                .and().exceptionHandling().accessDeniedPage("/403");
 
     }
 
