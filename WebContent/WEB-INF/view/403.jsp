@@ -1,15 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Matija
+  Date: 3/5/2017
+  Time: 10:37 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
-<link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
-<link href="<c:url value='/resources/css/bootstrap.min.js' />" rel="stylesheet">
 
-<title>Home Page</title>
+    <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
+    <link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
+    <link href="<c:url value='/resources/css/bootstrap.min.js' />" rel="stylesheet">
+
+    <title>Access Denied</title>
 </head>
 <body>
 
@@ -28,7 +33,7 @@
 
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/admin">Admin</a></li>
                     <c:choose>
                         <c:when test="${not empty pageContext.request.userPrincipal}">
@@ -49,6 +54,10 @@
         </div>
 
     </nav>
+
+    <div class="center">
+    <img src="<c:url value='/resources/image/access-denied.png' />">
+    </div>
 
 
     <!-- Site footer -->
