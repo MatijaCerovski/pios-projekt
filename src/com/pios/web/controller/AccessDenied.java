@@ -12,7 +12,7 @@ public class AccessDenied {
 
 
     @GetMapping("/403")
-    public String openAdmin(Model model){
+    public String openError(Model model){
 
         return "403";
 
