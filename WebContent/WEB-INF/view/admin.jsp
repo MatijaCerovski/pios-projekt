@@ -35,6 +35,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="${pageContext.request.contextPath}/">Home</a></li>
                     <li class="active"><a href="${pageContext.request.contextPath}/admin">Admin</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add/accommodation">Add Accommodation</a></li>
                     <c:choose>
                         <c:when test="${not empty pageContext.request.userPrincipal}">
                             <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
