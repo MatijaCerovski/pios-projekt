@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * Created by Matija on 3/6/2017.
+ * Created by Matija on 3/7/2017.
  */
 @Entity
 @Table(name = "accommodations", catalog = "pios_baza")
@@ -32,26 +32,6 @@ public class Accommodation {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Accommodation that = (Accommodation) o;
-
-        if (accommodationId != that.accommodationId) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = accommodationId;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
     }
 
     @OneToMany(mappedBy = "accommodation")

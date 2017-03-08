@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -67,6 +69,13 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     @Bean
     public HibernateTransactionManager txManager() {
         return new HibernateTransactionManager(sessionFactory());
+    }
+
+
+    // Bean name must be "multipartResolver", by default Spring uses method name as bean name.
+    @Bean
+    public MultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
     }
     
     @Override

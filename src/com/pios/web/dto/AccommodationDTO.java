@@ -1,6 +1,7 @@
 package com.pios.web.dto;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,8 +16,17 @@ public class AccommodationDTO {
     @Size(max = 254)
     private String name;
 
-    public AccommodationDTO(String name) {
+    @NotEmpty
+    @NotNull
+    private MultipartFile images[];
+
+
+    public AccommodationDTO() {
+    }
+
+    public AccommodationDTO(String name, MultipartFile[] images) {
         this.name = name;
+        this.images = images;
     }
 
     public String getName() {
@@ -25,5 +35,13 @@ public class AccommodationDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public MultipartFile[] getImages() {
+        return images;
+    }
+
+    public void setImages(MultipartFile[] images) {
+        this.images = images;
     }
 }

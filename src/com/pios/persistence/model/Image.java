@@ -3,13 +3,14 @@ package com.pios.persistence.model;
 import javax.persistence.*;
 
 /**
- * Created by Matija on 3/6/2017.
+ * Created by Matija on 3/7/2017.
  */
 @Entity
 @Table(name = "images", catalog = "pios_baza")
 public class Image {
     private int imageId;
     private int accommodationId;
+    private String name;
     private Accommodation accommodation;
 
     @Id
@@ -23,25 +24,16 @@ public class Image {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Image image = (Image) o;
-
-        if (imageId != image.imageId) return false;
-        if (accommodationId != image.accommodationId) return false;
-
-        return true;
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public int hashCode() {
-        int result = imageId;
-        result = 31 * result + accommodationId;
-        return result;
+    public void setName(String name) {
+        this.name = name;
     }
+
 
     @ManyToOne
     @JoinColumn(name = "accommodation_id", referencedColumnName = "accommodation_id", nullable = false)
