@@ -7,9 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
 <link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
-<link href="<c:url value='/resources/css/bootstrap.min.js' />" rel="stylesheet">
+<link href="<c:url value='/resources/js/bootstrap.min.js' />" rel="script">
 
 <title>Home Page</title>
+
 </head>
 <body>
 
@@ -49,6 +50,23 @@
         </div>
 
     </nav>
+
+
+    <table id="accommodations">
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        </thead>
+        <tbody>
+        <c:forEach items="${accommodations}" var="accommodation">
+            <tr>
+            <td>${accommodation.accommodationId}</td>
+            <td>${accommodation.name}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+
+    </table>
 
 
     <!-- Site footer -->

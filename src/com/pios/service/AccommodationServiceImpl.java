@@ -17,6 +17,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Matija on 3/8/2017.
@@ -59,6 +60,12 @@ public class AccommodationServiceImpl implements AccommodationService {
 
 
         return accommodation;
+    }
+
+    @Transactional
+    @Override
+    public List<Accommodation> fetchAllAccommodations() {
+        return accommodationDao.getAllAccommodations();
     }
 
     private void saveImageOnServer(MultipartFile image, String fileName) {

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * Created by Matija on 3/8/2017.
@@ -33,6 +34,14 @@ public class AccommodationDaoImpl implements AccommodationDao {
 
         return accommodation;
 
+    }
+
+    @Override
+    public List<Accommodation> getAllAccommodations() {
+
+        List<Accommodation> accommodations = sessionFactory.getCurrentSession().createCriteria(Accommodation.class).list();
+
+        return accommodations;
     }
 
     @Override
