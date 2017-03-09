@@ -1,5 +1,7 @@
 package com.pios.persistence.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -16,6 +18,8 @@ public class Order {
     private Accommodation accommodation;
 
     @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "order_id")
     public int getOrderId() {
         return orderId;

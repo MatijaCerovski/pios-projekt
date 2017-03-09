@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -46,6 +47,13 @@ public class Add {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView addAccommodation(@ModelAttribute("accommodation") @Valid AccommodationDTO accommodationDTO, BindingResult result,
                                      WebRequest request, Errors errors) {
+
+        for(MultipartFile tmp : accommodationDTO.getImages()){
+            if(!tmp.getContentType().equals("image/jpeg")){
+                //nije dobra extenzija baci error neki
+                return new ModelAndView("redirect:/wrongFileExtension");
+            }
+        }
 
         Accommodation accommodation = accommodationService.addAccommodation(accommodationDTO);
 

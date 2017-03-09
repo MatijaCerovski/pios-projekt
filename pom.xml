@@ -135,6 +135,12 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
+		<!--Za spremanje fajla na disk-->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

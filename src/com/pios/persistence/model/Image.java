@@ -1,5 +1,7 @@
 package com.pios.persistence.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**
@@ -14,6 +16,8 @@ public class Image {
     private Accommodation accommodation;
 
     @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "image_id")
     public int getImageId() {
         return imageId;
