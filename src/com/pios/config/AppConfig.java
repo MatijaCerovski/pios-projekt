@@ -33,7 +33,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/view/");
         viewResolver.setSuffix(".jsp");
- 
+
         return viewResolver;
     }
 
@@ -60,8 +60,8 @@ public class AppConfig extends WebMvcConfigurerAdapter{
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/pios_baza");
-        ds.setUsername("matija");
-        ds.setPassword("matija");
+        ds.setUsername("root");
+        ds.setPassword("password");
         return ds;
     }
 
@@ -77,12 +77,12 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     public MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
     }
-    
+
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
-    
 
-	
+
+
 }
