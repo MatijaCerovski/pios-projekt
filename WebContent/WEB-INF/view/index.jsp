@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -60,6 +61,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Iznajmi</th>
         </tr>
 
         </thead>
@@ -68,6 +70,10 @@
             <tr>
                 <td>${accommodation.accommodationId}</td>
                 <td>${accommodation.name}</td>
+
+                <c:set var="ime" value="${accommodation.name}"/>
+                <c:set var="ime_bez_razmaka" value="${fn:replace(ime,' ', '')}" />
+                <td><a href="${pageContext.request.contextPath}/detalji/${ime_bez_razmaka}">Detalji</a></td>
             </tr>
         </c:forEach>
         </tbody>
