@@ -59,9 +59,9 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/pios_baza");
-        ds.setUsername("root");
-        ds.setPassword("password");
+        ds.setUrl("jdbc:mysql://46.101.131.83:3306/pios_baza");
+        ds.setUsername("user");
+        ds.setPassword("lozinka");
         return ds;
     }
 

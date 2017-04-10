@@ -4,12 +4,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
-<link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
-<link href="<c:url value='/resources/js/bootstrap.min.js' />" rel="script">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
+    <link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
+    <link href="<c:url value='https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css' />" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <link href="<c:url value='/resources/js/bootstrap.min.js' />" rel="script">
 
-<title>Home Page</title>
+    <title>Home Page</title>
 
 </head>
 <body>
@@ -54,14 +57,17 @@
 
     <table id="accommodations">
         <thead>
-        <th>ID</th>
-        <th>Name</th>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+
         </thead>
         <tbody>
         <c:forEach items="${accommodations}" var="accommodation">
             <tr>
-            <td>${accommodation.accommodationId}</td>
-            <td>${accommodation.name}</td>
+                <td>${accommodation.accommodationId}</td>
+                <td>${accommodation.name}</td>
             </tr>
         </c:forEach>
         </tbody>
@@ -76,4 +82,11 @@
 
 </div> <!-- /container -->
 </body>
+
+<script !src="">
+    $(document).ready(function() {
+        $('#accommodations').DataTable();
+    } );
+</script>
+
 </html>
