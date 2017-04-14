@@ -37,6 +37,11 @@ public class AccommodationDaoImpl implements AccommodationDao {
     }
 
     @Override
+    public Accommodation getAccommodation(int accommodationId) {
+        return sessionFactory.getCurrentSession().get(Accommodation.class, accommodationId);
+    }
+
+    @Override
     public List<Accommodation> getAllAccommodations() {
 
         List<Accommodation> accommodations = sessionFactory.getCurrentSession().createCriteria(Accommodation.class).list();

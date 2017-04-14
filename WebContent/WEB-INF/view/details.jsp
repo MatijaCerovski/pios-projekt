@@ -1,18 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%--
+  Created by IntelliJ IDEA.
+  User: Matija
+  Date: 14.4.2017.
+  Time: 21:36
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Details</title>
+
     <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
     <link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
-    <link href="<c:url value='https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css' />" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <link href="<c:url value='/resources/js/bootstrap.min.js' />" rel="script">
-
-    <title>Home Page</title>
 
 </head>
 <body>
@@ -54,41 +55,7 @@
 
     </nav>
 
+</div>
 
-    <table id="accommodations">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Iznajmi</th>
-        </tr>
-
-        </thead>
-        <tbody>
-        <c:forEach items="${accommodations}" var="accommodation">
-            <tr>
-                <td>${accommodation.accommodationId}</td>
-                <td>${accommodation.name}</td>
-                <td><a href="${pageContext.request.contextPath}/details/${accommodation.accommodationId}">Details</a></td>
-            </tr>
-        </c:forEach>
-        </tbody>
-
-    </table>
-
-
-    <!-- Site footer -->
-    <footer class="footer">
-        <p>&copy; 2016 Company, Inc.</p>
-    </footer>
-
-</div> <!-- /container -->
 </body>
-
-<script !src="">
-    $(document).ready(function() {
-        $('#accommodations').DataTable();
-    } );
-</script>
-
 </html>

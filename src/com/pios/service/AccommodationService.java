@@ -11,5 +11,6 @@ import java.util.List;
 public interface AccommodationService {
 
     Accommodation addAccommodation(AccommodationDTO accommodationDTO);
+    Accommodation getAccommodation(int accommodationId);
     List<Accommodation> fetchAllAccommodations();
 }

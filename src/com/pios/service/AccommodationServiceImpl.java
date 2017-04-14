@@ -64,6 +64,12 @@ public class AccommodationServiceImpl implements AccommodationService {
 
     @Transactional
     @Override
+    public Accommodation getAccommodation(int accommodationId) {
+        return accommodationDao.getAccommodation(accommodationId);
+    }
+
+    @Transactional
+    @Override
     public List<Accommodation> fetchAllAccommodations() {
         return accommodationDao.getAllAccommodations();
     }

@@ -13,6 +13,7 @@ import java.util.List;
 public interface AccommodationDao {
 
     Accommodation addAccommodation(AccommodationDTO accommodationDTO);
+    Accommodation getAccommodation(int accommodationId);
     List<Accommodation> getAllAccommodations();
     Image addImage(Image image);
 }
