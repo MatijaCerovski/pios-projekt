@@ -71,9 +71,7 @@
                 <td>${accommodation.accommodationId}</td>
                 <td>${accommodation.name}</td>
 
-                <c:set var="ime" value="${accommodation.name}"/>
-                <c:set var="ime_bez_razmaka" value="${fn:replace(ime,' ', '')}" />
-                <td><a href="${pageContext.request.contextPath}/detalji/${ime_bez_razmaka}">Detalji</a></td>
+                <td><a href="${pageContext.request.contextPath}/detalji/${accommodation.accommodationId}">Detalji</a></td>
             </tr>
         </c:forEach>
         </tbody>
