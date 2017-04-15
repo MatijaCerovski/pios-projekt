@@ -77,8 +77,12 @@ public class AccommodationServiceImpl implements AccommodationService {
     private void saveImageOnServer(MultipartFile image, String fileName) {
         if (!image.isEmpty()) {
             try {
+                /*System.getProperty("catalina.base");
                 File file = new File(context.getRealPath("/") + "/uploads/"
                         + fileName);
+                */
+                String filePath = System.getProperty("catalina.home");
+                File file = new File(filePath + "\\uploads\\images\\" + fileName);
 
                 FileUtils.writeByteArrayToFile(file, image.getBytes());
                 System.out.println("Go to the location:  " + file.toString()

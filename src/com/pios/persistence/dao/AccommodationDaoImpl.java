@@ -3,6 +3,7 @@ package com.pios.persistence.dao;
 import com.pios.persistence.model.Accommodation;
 import com.pios.persistence.model.Image;
 import com.pios.web.dto.AccommodationDTO;
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -38,7 +39,10 @@ public class AccommodationDaoImpl implements AccommodationDao {
 
     @Override
     public Accommodation getAccommodation(int accommodationId) {
-        return sessionFactory.getCurrentSession().get(Accommodation.class, accommodationId);
+        Accommodation accommodation = sessionFactory.getCurrentSession().get(Accommodation.class, accommodationId);
+        Hibernate.initialize(accommodation.getImages());
+        Hibernate.initialize(accommodation.getOrders());
+        return accommodation;
     }
 
     @Override
