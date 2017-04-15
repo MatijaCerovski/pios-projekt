@@ -55,8 +55,12 @@
 
     </nav>
 
-    <div class="description">
+    <div class="name">
         ${accommodation.name}<hr>
+    </div>
+
+    <div class="images">
+
             <c:forEach items="${accommodation.images}" var="image">
                 <img src="${pageContext.request.contextPath}/image/${image.name}" alt=""><hr>
             </c:forEach>
