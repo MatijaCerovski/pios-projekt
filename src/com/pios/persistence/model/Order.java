@@ -15,6 +15,7 @@ public class Order {
     private int accommodationId;
     private Date startDate;
     private Date endDate;
+    private Boolean reserved;
     private Accommodation accommodation;
 
     @Id
@@ -48,6 +49,16 @@ public class Order {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    @Basic
+    @Column(name = "reserved")
+    public Boolean getReserved() {
+        return reserved;
+    }
+
+    public void setReserved(Boolean reserved) {
+        this.reserved = reserved;
     }
 
 
