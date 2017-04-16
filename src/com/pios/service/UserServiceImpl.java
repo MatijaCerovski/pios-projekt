@@ -40,5 +40,11 @@ public class UserServiceImpl implements IUserService{
 
     }
 
+    @Transactional
+    @Override
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
+    }
+
 
 }

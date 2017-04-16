@@ -72,4 +72,11 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    @Override
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        users = sessionFactory.getCurrentSession().createCriteria(User.class).list();
+        return users;
+    }
+
 }

@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface IUserService {
 
-    public User saveUser(UserRegistrationDTO userDTO);
+    User saveUser(UserRegistrationDTO userDTO);
+
+    List<User> getAllUsers();
 
 
 }

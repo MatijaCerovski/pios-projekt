@@ -7,6 +7,8 @@ package com.pios.persistence.dao;
 import com.pios.persistence.model.User;
 import com.pios.web.dto.UserRegistrationDTO;
 
+import java.util.List;
+
 
 public interface UserDao {
 
@@ -15,4 +17,6 @@ public interface UserDao {
     User findByEmail(String email);
 
     User registerNewUserAccount(UserRegistrationDTO userDTO);
+
+    List<User> getAllUsers();
 }
