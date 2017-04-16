@@ -24,10 +24,31 @@
 
     <div class="images">
 
-            <c:forEach items="${accommodation.images}" var="image">
-                <img src="${pageContext.request.contextPath}/image/${image.name}" alt=""><hr>
-            </c:forEach>
+        <c:forEach items="${accommodation.images}" var="image">
+            <img src="${pageContext.request.contextPath}/image/${image.name}" alt=""><hr>
+        </c:forEach>
     </div>
+
+    <table id="orders">
+        <thead>
+        <tr>
+            <th>Početak</th>
+            <th>Kraj</th>
+            <th>Iznajmi</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <c:forEach items="${accommodation.orders}" var="order">
+            <tr>
+                <td>${order.startDate}</td>
+                <td>${order.endDate}</td>
+                <td><a href="#">ToDo</a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
 
 </div>
 
