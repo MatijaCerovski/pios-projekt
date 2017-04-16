@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pios-projekt:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="pios-projekt-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="pios-projekt:war exploded" />
+    </root>
+  </artifact>
+</component>
