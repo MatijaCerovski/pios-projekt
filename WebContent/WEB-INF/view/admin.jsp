@@ -12,6 +12,9 @@
 <head>
     <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
     <link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
+    <link href="<c:url value='https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css' />" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <link href="<c:url value='/resources/js/bootstrap.min.js' />" rel="stylesheet">
     <title>Admin</title>
 </head>
@@ -62,6 +65,29 @@
     </security:authorize>
 
 
+
+    <table id="users">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Iznajmi</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <c:forEach items="${accommodations}" var="accommodation">
+            <tr>
+                <td>${accommodation.accommodationId}</td>
+                <td>${accommodation.name}</td>
+                <td><a href="${pageContext.request.contextPath}/details/${accommodation.accommodationId}">Details</a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+
+    </table>
+
+
     <!-- Site footer -->
     <footer class="footer">
         <p>&copy; 2016 Company, Inc.</p>
@@ -70,4 +96,11 @@
 </div> <!-- /container -->
 
 </body>
+
+<script !src="">
+    $(document).ready(function() {
+        $('#users').DataTable();
+    } );
+</script>
+
 </html>
