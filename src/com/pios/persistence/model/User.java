@@ -3,7 +3,9 @@ package com.pios.persistence.model;
 /**
  * Created by Matija on 3/2/2017.
  */
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +22,7 @@ public class User {
     private String password;
     private String email;
     private boolean enabled;
+    private List<Accommodation> accommodations = new ArrayList<>(0);
     private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
     public User() {
@@ -94,4 +97,12 @@ public class User {
         this.userRole.add(userRole);
     }
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    public List<Accommodation> getAccommodations() {
+        return accommodations;
+    }
+
+    public void setAccommodations(List<Accommodation> accommodations) {
+        this.accommodations = accommodations;
+    }
 }

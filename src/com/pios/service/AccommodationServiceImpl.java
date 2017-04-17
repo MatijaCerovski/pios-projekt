@@ -35,10 +35,10 @@ public class AccommodationServiceImpl implements AccommodationService {
 
     @Transactional
     @Override
-    public Accommodation addAccommodation(AccommodationDTO accommodationDTO) {
+    public Accommodation addAccommodation(AccommodationDTO accommodationDTO, String username) {
 
         //dodati smještaj u bazu
-        Accommodation accommodation = accommodationDao.addAccommodation(accommodationDTO);
+        Accommodation accommodation = accommodationDao.addAccommodation(accommodationDTO, username);
         //spremiti slike u bazu i na server
 
         Image image;
@@ -72,6 +72,12 @@ public class AccommodationServiceImpl implements AccommodationService {
     @Override
     public List<Accommodation> fetchAllAccommodations() {
         return accommodationDao.getAllAccommodations();
+    }
+
+    @Transactional
+    @Override
+    public List<Accommodation> fetchUserAccommodation(String username) {
+        return accommodationDao.fetchUserAccommodation(username);
     }
 
     private void saveImageOnServer(MultipartFile image, String fileName) {

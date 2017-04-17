@@ -12,8 +12,9 @@ import java.util.List;
  */
 public interface AccommodationDao {
 
-    Accommodation addAccommodation(AccommodationDTO accommodationDTO);
+    Accommodation addAccommodation(AccommodationDTO accommodationDTO, String username);
     Accommodation getAccommodation(int accommodationId);
     List<Accommodation> getAllAccommodations();
     Image addImage(Image image);
+    List<Accommodation> fetchUserAccommodation(String username);
 }

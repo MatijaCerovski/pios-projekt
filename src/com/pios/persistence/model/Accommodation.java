@@ -13,6 +13,8 @@ import java.util.Set;
 public class Accommodation {
     private int accommodationId;
     private String name;
+    private String username;
+    private User user;
     private Set<Image> images;
     private Set<Order> orders;
 
@@ -54,5 +56,24 @@ public class Accommodation {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "username", referencedColumnName = "username", nullable = false, insertable = false, updatable = false)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Column(name = "username", nullable = false)
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

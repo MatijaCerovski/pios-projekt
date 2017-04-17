@@ -12,52 +12,12 @@
 <head>
     <title>Add Accommodation</title>
 
-    <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
-    <link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
-    <link href="<c:url value='/resources/js/bootstrap.min.js' />" rel="stylesheet">
-
 </head>
 <body>
 
 <div class="container">
 
-    <nav class="navbar navbar-inverse">
-
-        <div class="container-fluid">
-
-            <!-- Logo -->
-            <div class="navbar-header">
-                <a href="#" class="navbar navbar-brand">Najam najam</a>
-            </div>
-
-            <!--Items -->
-
-            <div>
-                <ul class="nav navbar-nav">
-                    <li><a href="${pageContext.request.contextPath}/">Home</a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin">Admin</a></li>
-                    <li class="active"><a href="${pageContext.request.contextPath}/add/accommodation">Add Accommodation</a></li>
-                    <c:choose>
-                        <c:when test="${not empty pageContext.request.userPrincipal}">
-                            <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
-                        </c:otherwise>
-
-                    </c:choose>
-
-                    <li><a href="${pageContext.request.contextPath}/register">Register</a></li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </nav>
-
-
+    <c:import url="navbar.jsp"/>
 
     <form:form action="/add/accommodation" modelAttribute="accommodation" method="POST" enctype="multipart/form-data">
         <h1>Add Accommodation</h1>

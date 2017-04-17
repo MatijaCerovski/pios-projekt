@@ -10,7 +10,8 @@ import java.util.List;
  */
 public interface AccommodationService {
 
-    Accommodation addAccommodation(AccommodationDTO accommodationDTO);
+    Accommodation addAccommodation(AccommodationDTO accommodationDTO, String username);
     Accommodation getAccommodation(int accommodationId);
     List<Accommodation> fetchAllAccommodations();
+    List<Accommodation> fetchUserAccommodation(String username);
 }

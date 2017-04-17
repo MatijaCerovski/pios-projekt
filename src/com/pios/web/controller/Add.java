@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 /**
  * Created by Matija on 3/7/2017.
@@ -46,7 +47,7 @@ public class Add {
     @PostMapping("/accommodation")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView addAccommodation(@ModelAttribute("accommodation") @Valid AccommodationDTO accommodationDTO, BindingResult result,
-                                     WebRequest request, Errors errors) {
+                                     WebRequest request, Errors errors, Principal principal) {
 
         for(MultipartFile tmp : accommodationDTO.getImages()){
             if(!tmp.getContentType().equals("image/jpeg")){
@@ -55,7 +56,7 @@ public class Add {
             }
         }
 
-        Accommodation accommodation = accommodationService.addAccommodation(accommodationDTO);
+        Accommodation accommodation = accommodationService.addAccommodation(accommodationDTO, principal.getName());
 
 
         if (result.hasErrors()) {
