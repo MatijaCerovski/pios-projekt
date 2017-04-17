@@ -20,22 +20,22 @@
             </div>
 
             <!--Items -->
-
+            <c:set var="page" value="${requestScope['javax.servlet.forward.servlet_path']}"/>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin">Admin</a></li>
+                    <li class="${page == '/' ? 'active':''}"><a href="${pageContext.request.contextPath}/">Home</a></li>
+                    <li class="${page == '/admin' ? 'active':''}"><a href="${pageContext.request.contextPath}/admin">Admin</a></li>
                     <c:choose>
                         <c:when test="${not empty pageContext.request.userPrincipal}">
                             <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+                            <li class="${page == '/login' ? 'active':''}"><a href="${pageContext.request.contextPath}/login">Login</a></li>
                         </c:otherwise>
 
                     </c:choose>
 
-                    <li><a href="${pageContext.request.contextPath}/register">Register</a></li>
+                    <li class="${page == '/register' ? 'active':''}"><a href="${pageContext.request.contextPath}/register">Register</a></li>
 
                 </ul>
 
