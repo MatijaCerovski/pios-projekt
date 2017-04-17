@@ -4,8 +4,10 @@
     <link href="<c:url value='/resources/css/style.css' />" rel="stylesheet">
     <link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet">
     <link href="<c:url value='https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css' />" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="<c:url value='/resources/js/bootstrap.min.js' />" rel="script">
 
 </head>
@@ -50,11 +52,8 @@
 <script !src="">
     $(document).ready(function() {
         $('#accommodations').DataTable();
-    } );
-    $(document).ready(function() {
         $('#orders').DataTable();
-    } );
-    $(document).ready(function() {
         $('#users').DataTable();
+        $('.datepicker').datepicker();
     } );
 </script>

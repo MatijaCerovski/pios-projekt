@@ -29,6 +29,8 @@
         </c:forEach>
     </div>
 
+    <h3>Termini</h3>
+
     <table id="orders">
         <thead>
         <tr>
@@ -43,11 +45,16 @@
             <tr>
                 <td>${order.startDate}</td>
                 <td>${order.endDate}</td>
-                <td><a href="#">ToDo</a></td>
+                <td><a href="${pageContext.request.contextPath}/details/${accommodation.accommodationId}/rent/${order.orderId}">Odaberi</a></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
 
 </div>
