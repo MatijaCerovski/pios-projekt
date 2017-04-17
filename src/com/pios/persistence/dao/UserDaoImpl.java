@@ -3,6 +3,9 @@ package com.pios.persistence.dao;
 import com.pios.persistence.model.User;
 import com.pios.persistence.model.UserRole;
 import com.pios.web.dto.UserRegistrationDTO;
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -75,7 +78,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        users = sessionFactory.getCurrentSession().createCriteria(User.class).list();
+        users = sessionFactory.getCurrentSession().createCriteria(User.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
         return users;
     }
 
