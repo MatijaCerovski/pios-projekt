@@ -20,39 +20,44 @@
 
     <form:form action="register" modelAttribute="user" method="POST">
         <h1>Sign up</h1>
-        <p>
-            Your username
+
+        <div class="form-group">
+            <label for="username">Your username:</label>
             <form:input path="username" id="username" required="required"
                         type="text" placeholder="makoa"/>
             <form:errors path="username" element="div"/>
-        </p>
-        <p>
-            Your email
+        </div>
+
+        <div class="form-group">
+            <label for="email">Your email:</label>
             <form:input path="email" id="email" required="required"
                         type="email" placeholder="makoa@mail.com"/>
             <form:errors path="email" element="div"/>
-        </p>
-        <p>
-            Your password
+        </div>
+
+        <div class="form-group">
+            <label for="password">Your password:</label>
             <form:input path="password" id="password" required="required"
                         type="password" placeholder="eg. X8df!90EO"/>
             <form:errors path="password" element="div"/>
-        </p>
-        <p>
-            Please confirm your password
+        </div>
+
+        <div class="form-group">
+            <label for="matchingPassword">Please confirm your password:</label>
             <form:input path="matchingPassword" id="matchingPassword"
                         required="required" type="password" placeholder="eg. X8df!90EO"/>
+        </div>
 
-        </p>
-        <p>
-            <input type="submit" value="Sign up"/>
-        </p>
+        <div class="form-actions">
+            <button type="submit" class="btn">Sign up</button>
+        </div>
+
         <input type="hidden" name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
-        <p>
+        <div class="form-group">
             Already a member ? <a href="login" class="to_register"> Go and
             log in </a>
-        </p>
+        </div>
     </form:form>
 
 </div>
