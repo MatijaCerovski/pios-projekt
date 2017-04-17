@@ -30,6 +30,8 @@
         <tr>
             <th>Username</th>
             <th>Email</th>
+            <th>Role User</th>
+            <th>Role Admin</th>
         </tr>
 
         </thead>
@@ -38,7 +40,30 @@
             <tr>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
-                <td>${user.userRole}</td>
+                <c:if test="${user.userRole.size() == '0'}">
+                    <td><a href="${pageContext.request.contextPath}/give/roleuser/${user.username}">Add role</a></td>
+                    <td><a href="${pageContext.request.contextPath}/give/roleadmin/${user.username}">Add role</a></td>
+                </c:if>
+                <c:if test="${user.userRole.size() == '1'}">
+                    <c:forEach items="${user.userRole}" var="userRole">
+                        <c:if test="${userRole.role == 'ROLE_USER'}">
+                            <td><a href="${pageContext.request.contextPath}/remove/roleuser/${user.username}">Remove role</a></td>
+                            <td><a href="${pageContext.request.contextPath}/give/roleadmin/${user.username}">Add role</a></td>
+                        </c:if>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${user.userRole.size() == '1'}">
+                    <c:forEach items="${user.userRole}" var="userRole">
+                        <c:if test="${userRole.role == 'ROLE_ADMIN'}">
+                            <td><a href="${pageContext.request.contextPath}/give/roleuser/${user.username}">Give role</a></td>
+                            <td><a href="${pageContext.request.contextPath}/remove/roleadmin/${user.username}">Remove role</a></td>
+                        </c:if>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${user.userRole.size() == '2'}">
+                    <td><a href="${pageContext.request.contextPath}/remove/roleuser/${user.username}">Remove role</a></td>
+                    <td><a href="${pageContext.request.contextPath}/remove/roleadmin/${user.username}">Remove role</a></td>
+                </c:if>
             </tr>
         </c:forEach>
         </tbody>
