@@ -126,4 +126,6 @@
         </div>
 
     </body>
+    <script src="/resources/js/rent.js"></script>
+
 </html>
