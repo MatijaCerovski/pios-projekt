@@ -1,5 +1,6 @@
 package com.pios.web.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -15,12 +16,14 @@ public class Rent{
 
 
     @GetMapping("/rent/{orderId}")
+    @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_ADMIN')")
     public String openRent(@PathVariable int orderId){
 
         return "rent";
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_ADMIN')")
     public void rentAccommodation(BindingResult result,
                                   WebRequest request, Errors errors) {
 

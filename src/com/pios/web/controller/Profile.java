@@ -23,7 +23,7 @@ public class Profile {
     AccommodationService accommodationService;
 
     @GetMapping()
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_ADMIN')")
     public String openProfile(Model model, Principal principal){
 
         model.addAttribute("accommodations",accommodationService.fetchUserAccommodation(principal.getName()));
