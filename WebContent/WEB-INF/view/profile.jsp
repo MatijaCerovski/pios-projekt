@@ -49,6 +49,7 @@
                         <input type="text" class="to" name="to">
                     </td>
                     <td><input type="submit" value="Add date"></td>
+                    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
                 </form>
             </tr>
         </c:forEach>
@@ -63,7 +64,7 @@
 
 <script>
     $( function() {
-        var dateFormat = "mm/dd/yy",
+        var dateFormat = "dd/mm/yy",
             from = $( ".from" )
                 .datepicker({
                     defaultDate: "+1w",
