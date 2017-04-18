@@ -46,10 +46,6 @@ public class DateController {
 
         accommodationService.setAccommodationOrder(order);
 
-        //LOG
-        System.out.println(from.toString()+"----"+to.toString() + "########" +accommodationId + "===" +price);
-
-
         return "redirect:/profile";
     }
 }
