@@ -35,14 +35,6 @@
             <form:errors path="images" element="div"/>
         </p>
 
-        <p>
-            Price
-            <form:input path="price" id="price" required="required"
-                        type="number" placeholder="Price"/>
-            <form:errors path="price" element="div"/>
-        </p>
-
-
         <!--<input type="file" name="images" multiple/><br/>-->
 
         <p>

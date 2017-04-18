@@ -31,14 +31,10 @@ public class AccommodationDaoImpl implements AccommodationDao {
         Accommodation accommodation = new Accommodation();
         accommodation.setName(accommodationDTO.getName());
         accommodation.setUsername(username);
-        accommodation.setPrice(accommodationDTO.getPrice());
 
         sessionFactory.getCurrentSession().save(accommodation);
 
-
-
         return accommodation;
-
     }
 
     @Override

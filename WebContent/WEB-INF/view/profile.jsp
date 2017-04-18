@@ -49,6 +49,7 @@
                         <input type="text" class="to" name="to">
                     </td>
                     <td><input type="submit" value="Add date"></td>
+                    <input type="hidden" name="accommodationId" value="${accommodation.accommodationId}">
                     <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
                 </form>
             </tr>

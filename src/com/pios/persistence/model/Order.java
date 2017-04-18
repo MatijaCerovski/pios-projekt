@@ -16,6 +16,7 @@ public class Order {
     private Date startDate;
     private Date endDate;
     private Boolean reserved;
+    private int price;
     private Accommodation accommodation;
 
     @Id
@@ -70,5 +71,15 @@ public class Order {
 
     public void setAccommodation(Accommodation accommodation) {
         this.accommodation = accommodation;
+    }
+
+    @Basic
+    @Column(name = "price")
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

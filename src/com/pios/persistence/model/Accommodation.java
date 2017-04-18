@@ -15,7 +15,6 @@ public class Accommodation {
     private String name;
     private String username;
     private User user;
-    private int price;
     private Set<Image> images;
     private Set<Order> orders;
 
@@ -78,13 +77,4 @@ public class Accommodation {
         this.username = username;
     }
 
-    @Basic
-    @Column(name = "price")
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 }

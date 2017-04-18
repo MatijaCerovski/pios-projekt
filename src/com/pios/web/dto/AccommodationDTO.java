@@ -20,9 +20,6 @@ public class AccommodationDTO {
     @NotNull
     private MultipartFile images[];
 
-    @NotNull
-    private int price;
-
 
     public AccommodationDTO() {
     }
@@ -48,11 +45,4 @@ public class AccommodationDTO {
         this.images = images;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 }

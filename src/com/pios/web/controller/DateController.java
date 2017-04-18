@@ -19,9 +19,12 @@ public class DateController {
 
     @PostMapping
     @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_ADMIN')")
-    public String dodajDatumSmjestaja(@RequestParam("from") Date from, @RequestParam("to") Date to){
+    public String dodajDatumSmjestaja(@RequestParam("from") Date from, @RequestParam("to") Date to,
+                                        @RequestParam("accommodationId") int accommodationId){
 
-        System.out.println(from.toString()+"----"+to.toString());
+
+        //LOG
+        //System.out.println(from.toString()+"----"+to.toString() + "########" +accommodationId);
 
 
         return "redirect:/profile";
