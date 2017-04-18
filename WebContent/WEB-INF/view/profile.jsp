@@ -30,8 +30,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+            <th>Choose Date</th>
             <th>Add</th>
         </tr>
 
@@ -39,11 +38,18 @@
         <tbody>
         <c:forEach items="${accommodations}" var="accommodation">
             <tr>
-                <td>${accommodation.accommodationId}</td>
-                <td>${accommodation.name}</td>
-                <td><input type="text" class="datepicker" id="startDate" required="required"/></td>
-                <td><input type="text" class="datepicker" id="endDate" required="required"/></td>
-                <td>Prazno</td>
+                <
+                <form action="/add/accommodation/date" method="post">
+                    <td>${accommodation.accommodationId}</td>
+                    <td>${accommodation.name}</td>
+                    <td>
+                        <label for="from">From</label>
+                        <input type="text" id="from" name="from">
+                        <label for="to">to</label>
+                        <input type="text" id="to" name="to">
+                    </td>
+                    <td><input type="submit" value="Submit"></td>
+                </form>
             </tr>
         </c:forEach>
         </tbody>
@@ -55,10 +61,38 @@
 
 </body>
 
-<script !src="">
-    $(document).ready(function() {
-        $( ".startDate" ).datepicker();
-        $( ".endDate" ).datepicker();
+<script>
+    $( function() {
+        var dateFormat = "mm/dd/yy",
+            from = $( "#from" )
+                .datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 3
+                })
+                .on( "change", function() {
+                    to.datepicker( "option", "minDate", getDate( this ) );
+                }),
+            to = $( "#to" ).datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 3
+            })
+                .on( "change", function() {
+                    from.datepicker( "option", "maxDate", getDate( this ) );
+                });
+
+        function getDate( element ) {
+            var date;
+            try {
+                date = $.datepicker.parseDate( dateFormat, element.value );
+            } catch( error ) {
+                date = null;
+            }
+
+            return date;
+        }
     } );
 </script>
+
 </html>

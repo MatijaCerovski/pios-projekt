@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username"/>
+            <input type="text" id="username" name="username" autofocus/>
         </div>
 
         <div class="form-group">
