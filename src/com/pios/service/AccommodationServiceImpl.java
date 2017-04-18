@@ -3,6 +3,7 @@ package com.pios.service;
 import com.pios.persistence.dao.AccommodationDao;
 import com.pios.persistence.model.Accommodation;
 import com.pios.persistence.model.Image;
+import com.pios.persistence.model.Order;
 import com.pios.web.dto.AccommodationDTO;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,12 @@ public class AccommodationServiceImpl implements AccommodationService {
     @Override
     public List<Accommodation> fetchUserAccommodation(String username) {
         return accommodationDao.fetchUserAccommodation(username);
+    }
+
+    @Transactional
+    @Override
+    public void setAccommodationOrder(Order order) {
+        accommodationDao.setAccommodationOrder(order);
     }
 
     private void saveImageOnServer(MultipartFile image, String fileName) {

@@ -32,6 +32,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Choose Date</th>
+            <th>Price</th>
             <th>Add</th>
         </tr>
 
@@ -48,6 +49,7 @@
                         <label>to</label>
                         <input type="text" class="to" name="to">
                     </td>
+                    <td><input type="number" class="price" name="price"></td>
                     <td><input type="submit" value="Add date"></td>
                     <input type="hidden" name="accommodationId" value="${accommodation.accommodationId}">
                     <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
@@ -65,7 +67,7 @@
 
 <script>
     $( function() {
-        var dateFormat = "dd/mm/yy",
+        var dateFormat = "mm/dd/yy",
             from = $( ".from" )
                 .datepicker({
                     defaultDate: "+1w",

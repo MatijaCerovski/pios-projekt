@@ -2,18 +2,14 @@ package com.pios.persistence.dao;
 
 import com.pios.persistence.model.Accommodation;
 import com.pios.persistence.model.Image;
-import com.pios.persistence.model.User;
+import com.pios.persistence.model.Order;
 import com.pios.web.dto.AccommodationDTO;
 import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -65,6 +61,11 @@ public class AccommodationDaoImpl implements AccommodationDao {
     @Override
     public List<Accommodation> fetchUserAccommodation(String username) {
        return sessionFactory.getCurrentSession().createCriteria(Accommodation.class).add(Restrictions.eq("username", username)).list();
+    }
+
+    @Override
+    public void setAccommodationOrder(Order order) {
+        sessionFactory.getCurrentSession().save(order);
     }
 
 

@@ -3,7 +3,7 @@ package com.pios.persistence.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by Matija on 3/7/2017.
@@ -82,4 +82,6 @@ public class Order {
     public void setPrice(int price) {
         this.price = price;
     }
+
+
 }

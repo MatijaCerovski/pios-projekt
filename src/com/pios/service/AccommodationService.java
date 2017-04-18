@@ -1,6 +1,7 @@
 package com.pios.service;
 
 import com.pios.persistence.model.Accommodation;
+import com.pios.persistence.model.Order;
 import com.pios.web.dto.AccommodationDTO;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface AccommodationService {
     Accommodation getAccommodation(int accommodationId);
     List<Accommodation> fetchAllAccommodations();
     List<Accommodation> fetchUserAccommodation(String username);
+    void setAccommodationOrder(Order order);
 }

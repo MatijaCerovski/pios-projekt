@@ -2,6 +2,7 @@ package com.pios.persistence.dao;
 
 import com.pios.persistence.model.Accommodation;
 import com.pios.persistence.model.Image;
+import com.pios.persistence.model.Order;
 import com.pios.web.dto.AccommodationDTO;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,4 +18,5 @@ public interface AccommodationDao {
     List<Accommodation> getAllAccommodations();
     Image addImage(Image image);
     List<Accommodation> fetchUserAccommodation(String username);
+    void setAccommodationOrder(Order order);
 }
