@@ -43,10 +43,10 @@
                     <td>${accommodation.accommodationId}</td>
                     <td>${accommodation.name}</td>
                     <td>
-                        <label for="from">From</label>
-                        <input type="text" id="from" name="from">
-                        <label for="to">to</label>
-                        <input type="text" id="to" name="to">
+                        <label>From</label>
+                        <input type="text" class="from" name="from">
+                        <label>to</label>
+                        <input type="text" class="to" name="to">
                     </td>
                     <td><input type="submit" value="Submit"></td>
                 </form>
@@ -64,7 +64,7 @@
 <script>
     $( function() {
         var dateFormat = "mm/dd/yy",
-            from = $( "#from" )
+            from = $( ".from" )
                 .datepicker({
                     defaultDate: "+1w",
                     changeMonth: true,
@@ -73,7 +73,7 @@
                 .on( "change", function() {
                     to.datepicker( "option", "minDate", getDate( this ) );
                 }),
-            to = $( "#to" ).datepicker({
+            to = $( ".to" ).datepicker({
                 defaultDate: "+1w",
                 changeMonth: true,
                 numberOfMonths: 1
