@@ -24,7 +24,7 @@
         <div class="form-group">
             <label for="username">Your username:</label>
             <form:input path="username" id="username" required="required"
-                        type="text" placeholder="makoa"/>
+                        type="text" placeholder="makoa" autofocus="autofocus"/>
             <form:errors path="username" element="div"/>
         </div>
 
