@@ -3,7 +3,6 @@ package com.pios.web.controller;
 import com.pios.persistence.model.Accommodation;
 import com.pios.service.AccommodationService;
 import com.pios.web.dto.AccommodationDTO;
-import com.pios.web.dto.UserRegistrationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,19 +22,19 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 /**
- * Created by Matija on 3/7/2017.
+ * Created by Matija on 18.4.2017..
  */
 @Controller
-@RequestMapping("/add")
-public class Add {
+@RequestMapping("/add/accommodation")
+public class AccommodationController{
 
     @Autowired
     @Qualifier("accommodationService")
     AccommodationService accommodationService;
 
 
-    @GetMapping("/accommodation")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN' , 'ROLE_USER')")
     public String addAccommodation(Model model){
 
         AccommodationDTO accommodationDTO = new AccommodationDTO();
@@ -44,10 +43,10 @@ public class Add {
         return "addAccommodation";
     }
 
-    @PostMapping("/accommodation")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN' , 'ROLE_USER')")
     public ModelAndView addAccommodation(@ModelAttribute("accommodation") @Valid AccommodationDTO accommodationDTO, BindingResult result,
-                                     WebRequest request, Errors errors, Principal principal) {
+                                         WebRequest request, Errors errors, Principal principal) {
 
         for(MultipartFile tmp : accommodationDTO.getImages()){
             if(!tmp.getContentType().equals("image/jpeg")){
@@ -66,6 +65,4 @@ public class Add {
             // return "redirect:/login";
         }
     }
-
-
 }
