@@ -24,6 +24,7 @@
         </security:authorize>
     </div>
 
+    <a href="${pageContext.request.contextPath}/add/accommodation" class="btn btn-info" role="button">Add Accommodation</a><hr>
 
     <table id="accommodations">
         <thead>
@@ -38,7 +39,6 @@
         <tbody>
         <c:forEach items="${accommodations}" var="accommodation">
             <tr>
-                <
                 <form action="/add/accommodation/date" method="post">
                     <td>${accommodation.accommodationId}</td>
                     <td>${accommodation.name}</td>
@@ -48,7 +48,7 @@
                         <label>to</label>
                         <input type="text" class="to" name="to">
                     </td>
-                    <td><input type="submit" value="Submit"></td>
+                    <td><input type="submit" value="Add date"></td>
                 </form>
             </tr>
         </c:forEach>
