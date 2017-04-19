@@ -102,7 +102,7 @@ public class User {
         this.accommodations = accommodations;
     }
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "user")
     public UsersInfo getUserInfo() {
         return userInfo;
     }

@@ -68,7 +68,7 @@ public class UserDaoImpl implements UserDao {
         // dodavanje ROLA u user varijablu
         UserRole userRole = new UserRole(user, "ROLE_USER");
         user.addUserRole(userRole);
-        //dodavanje user info u user
+        //kreiranje userInfo koji se sprema u bazu
         UsersInfo usersInfo = new UsersInfo(user);
 
         sessionFactory.getCurrentSession().save(user);

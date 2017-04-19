@@ -14,5 +14,7 @@ public interface IUserService {
 
     List<User> getAllUsers();
 
+    User getUserByUsername(String username);
+
 
 }
