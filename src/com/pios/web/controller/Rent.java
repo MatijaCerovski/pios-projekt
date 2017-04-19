@@ -16,6 +16,7 @@ public class Rent{
 
 
     @GetMapping("/rent/{orderId}")
+    @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_ADMIN')")
     public String openRent(@PathVariable int orderId){
 
         return "rent";
