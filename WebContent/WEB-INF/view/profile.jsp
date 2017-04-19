@@ -26,6 +26,7 @@
 
     <a href="${pageContext.request.contextPath}/add/accommodation" class="btn btn-info" role="button">Add Accommodation</a><hr>
 
+    <h1>Your offers</h1>
     <table id="accommodations">
         <thead>
         <tr>
@@ -59,6 +60,8 @@
         </tbody>
 
     </table>
+    <hr>
+    <h1>Your reservations</h1>
 
 
 </div>

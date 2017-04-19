@@ -17,6 +17,7 @@ public class Order {
     private Date endDate;
     private Boolean reserved;
     private int price;
+    private String username;
     private Accommodation accommodation;
 
     @Id
@@ -83,5 +84,13 @@ public class Order {
         this.price = price;
     }
 
+    @Basic
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
