@@ -2,6 +2,7 @@ package com.pios.persistence.dao;
 
 import com.pios.persistence.model.User;
 import com.pios.persistence.model.UserRole;
+import com.pios.persistence.model.UsersInfo;
 import com.pios.web.dto.UserRegistrationDTO;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -67,9 +68,12 @@ public class UserDaoImpl implements UserDao {
         // dodavanje ROLA u user varijablu
         UserRole userRole = new UserRole(user, "ROLE_USER");
         user.addUserRole(userRole);
+        //dodavanje user info u user
+        UsersInfo usersInfo = new UsersInfo(user);
 
         sessionFactory.getCurrentSession().save(user);
         sessionFactory.getCurrentSession().save(userRole);
+        sessionFactory.getCurrentSession().save(usersInfo);
 
         return user;
 

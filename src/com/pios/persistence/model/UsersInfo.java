@@ -21,6 +21,15 @@ public class UsersInfo {
     private int userInfoId;
     private User user;
 
+
+    public UsersInfo() {
+    }
+
+
+    public UsersInfo(User user) {
+        this.user = user;
+    }
+
     @Basic
     @Column(name = "name")
     public String getName() {
@@ -119,43 +128,6 @@ public class UsersInfo {
 
     public void setUserInfoId(int userInfoId) {
         this.userInfoId = userInfoId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UsersInfo usersInfo = (UsersInfo) o;
-
-        if (userInfoId != usersInfo.userInfoId) return false;
-        if (name != null ? !name.equals(usersInfo.name) : usersInfo.name != null) return false;
-        if (surname != null ? !surname.equals(usersInfo.surname) : usersInfo.surname != null) return false;
-        if (birthDate != null ? !birthDate.equals(usersInfo.birthDate) : usersInfo.birthDate != null) return false;
-        if (cityTown != null ? !cityTown.equals(usersInfo.cityTown) : usersInfo.cityTown != null) return false;
-        if (postalCode != null ? !postalCode.equals(usersInfo.postalCode) : usersInfo.postalCode != null) return false;
-        if (streetName != null ? !streetName.equals(usersInfo.streetName) : usersInfo.streetName != null) return false;
-        if (streetNumber != null ? !streetNumber.equals(usersInfo.streetNumber) : usersInfo.streetNumber != null)
-            return false;
-        if (phone != null ? !phone.equals(usersInfo.phone) : usersInfo.phone != null) return false;
-        if (cellPhone != null ? !cellPhone.equals(usersInfo.cellPhone) : usersInfo.cellPhone != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
-        result = 31 * result + (cityTown != null ? cityTown.hashCode() : 0);
-        result = 31 * result + (postalCode != null ? postalCode.hashCode() : 0);
-        result = 31 * result + (streetName != null ? streetName.hashCode() : 0);
-        result = 31 * result + (streetNumber != null ? streetNumber.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + (cellPhone != null ? cellPhone.hashCode() : 0);
-        result = 31 * result + userInfoId;
-        return result;
     }
 
     @OneToOne
