@@ -5,6 +5,7 @@ package com.pios.persistence.dao;
  */
 
 import com.pios.persistence.model.User;
+import com.pios.web.dto.UserInfoDTO;
 import com.pios.web.dto.UserRegistrationDTO;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface UserDao {
     User registerNewUserAccount(UserRegistrationDTO userDTO);
 
     List<User> getAllUsers();
+
+    void updateUserInfo(UserInfoDTO userInfo);
 }

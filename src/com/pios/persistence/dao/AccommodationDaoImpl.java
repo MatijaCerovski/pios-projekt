@@ -68,5 +68,19 @@ public class AccommodationDaoImpl implements AccommodationDao {
         sessionFactory.getCurrentSession().save(order);
     }
 
+    @Override
+    public Order getOrderById(Integer orderId) {
+       List<Order> orders = sessionFactory.getCurrentSession().createQuery("from Order where orderId=?").setParameter(0, orderId)
+                .list();
+
+       //vrati jedini order jer je samo jedan s tim ID-em ako nije onda nekaj nevalja ili ga nema uopce(nullpointer alert)
+        return orders.get(0);
+    }
+
+    @Override
+    public void updateOrderStatus(Order order) {
+        sessionFactory.getCurrentSession().update(order);
+    }
+
 
 }

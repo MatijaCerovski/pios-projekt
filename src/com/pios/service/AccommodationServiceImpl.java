@@ -1,10 +1,12 @@
 package com.pios.service;
 
 import com.pios.persistence.dao.AccommodationDao;
+import com.pios.persistence.dao.UserDao;
 import com.pios.persistence.model.Accommodation;
 import com.pios.persistence.model.Image;
 import com.pios.persistence.model.Order;
 import com.pios.web.dto.AccommodationDTO;
+import com.pios.web.dto.UserInfoDTO;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,9 @@ public class AccommodationServiceImpl implements AccommodationService {
 
     @Autowired
     AccommodationDao accommodationDao;
+
+    @Autowired
+    private UserDao userDao;
 
     @Autowired
     ServletContext context;
@@ -85,6 +90,19 @@ public class AccommodationServiceImpl implements AccommodationService {
     @Override
     public void setAccommodationOrder(Order order) {
         accommodationDao.setAccommodationOrder(order);
+    }
+
+    @Transactional
+    @Override
+    public Order getOrderById(Integer orderId) {
+        return accommodationDao.getOrderById(orderId);
+    }
+
+    @Transactional
+    @Override
+    public void saveOrderandUpdateUserInfo(Order order, UserInfoDTO userInfo) {
+        accommodationDao.updateOrderStatus(order);
+        userDao.updateUserInfo(userInfo);
     }
 
     private void saveImageOnServer(MultipartFile image, String fileName) {

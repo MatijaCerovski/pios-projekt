@@ -10,7 +10,7 @@
 
             <c:import url="navbar.jsp"/>
 
-            <form:form action="rent" modelAttribute="userInfo" method="POST">
+            <form:form action="confirm" modelAttribute="userInfo" method="POST">
                 <h1>Podatci</h1>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -18,7 +18,7 @@
                         <label for="name" class="pull-right">Ime:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="text" class="form-control" id="name" value="${userInfo.name}" required="required"/>
+                        <form:input path="name" type="text" class="form-control" id="name" value="${userInfo.name}" required="required"/>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                         <label for="surname" class="pull-right">Prezime:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="text" class="form-control" id="surname" value="${userInfo.surname}" required="required"/>
+                        <form:input path="surname" type="text" class="form-control" id="surname" value="${userInfo.surname}" required="required"/>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@
                         <label for="birthDate" class="pull-right">Datum rođenja:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="text" class="form-control datepicker" id="birthDate" value="${userInfo.birthDate}" required="required"/>
+                        <form:input path="birthDate" type="text" class="form-control datepicker" id="birthDate" value="${userInfo.birthDate}" required="required"/>
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@
                         <label for="cityTown" class="pull-right">Grad/mjesto:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="text" class="form-control" id="cityTown" value="${userInfo.cityTown}" required="required"/>
+                        <form:input path="cityTown" type="text" class="form-control" id="cityTown" value="${userInfo.cityTown}" required="required"/>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                         <label for="postalCode" class="pull-right">Poštanski broj:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="number" class="form-control" id="postalCode" value="${userInfo.postalCode}" required="required" maxlength="5"/>
+                        <form:input path="postalCode" type="number" class="form-control" id="postalCode" value="${userInfo.postalCode}" required="required" maxlength="5"/>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                         <label for="streetName" class="pull-right">Ulica:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="text" class="form-control" id="streetName" value="${userInfo.streetName}" required="required"/>
+                        <form:input path="streetName" type="text" class="form-control" id="streetName" value="${userInfo.streetName}" required="required"/>
                     </div>
                 </div>
 
@@ -72,7 +72,7 @@
                         <label for="streetNumber" class="pull-right">Kućni broj:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="text" class="form-control" id="streetNumber" value="${userInfo.streetNumber}" required="required"/>
+                        <form:input path="streetNumber" type="number" class="form-control" id="streetNumber" value="${userInfo.streetNumber}" required="required"/>
                     </div>
                 </div>
 
@@ -81,7 +81,7 @@
                         <label for="phone" class="pull-right">Telefon:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="number" class="form-control" value="${userInfo.phone}" id="phone"/>
+                        <form:input path="phone" type="number" class="form-control" value="${userInfo.phone}" id="phone"/>
                     </div>
                 </div>
 
@@ -90,7 +90,7 @@
                         <label for="cellPhone" class="pull-right control-label">Mobitel:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <input type="number" class="form-control" id="cellPhone" value="${userInfo.cellPhone}" required="required"/>
+                        <form:input path="cellPhone" type="number" class="form-control" id="cellPhone" value="${userInfo.cellPhone}" required="required"/>
                     </div>
                 </div>
 
@@ -102,6 +102,9 @@
                         <button type="submit" class="btn btn-success">Rezerviraj</button>
                     </div>
                 </div>
+                <form:input path="userInfoId" type="hidden" id="userInfoId" value="${userInfo.userInfoId}"/>
+                <form:input path="username" type="hidden" id="username" value="${userInfo.username}"/>
+                <input type="hidden" name="orderId" id="orderId" value="${orderID}">
 
             </form:form>
 

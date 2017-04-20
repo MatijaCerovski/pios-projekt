@@ -24,7 +24,6 @@ public class UserInfoDTO {
     private String surname;
 
     @NotNull
-    @NotEmpty
     private Date birthDate;
 
     @NotNull
@@ -33,8 +32,6 @@ public class UserInfoDTO {
     private String cityTown;
 
     @NotNull
-    @NotEmpty
-    @Size(max = 5)
     private String postalCode;
 
     @NotNull
@@ -43,18 +40,15 @@ public class UserInfoDTO {
     private String streetName;
 
     @NotNull
-    @NotEmpty
     private Integer streetNumber;
 
     private Integer phone;
 
     @NotNull
-    @NotEmpty
     private Integer cellPhone;
 
     @NotNull
-    @NotEmpty
-    private int userInfoId;
+    private Integer userInfoId;
 
     @NotNull
     @NotEmpty
@@ -151,4 +145,5 @@ public class UserInfoDTO {
     public void setUsername(String username) {
         this.username = username;
     }
+
 }

@@ -19,4 +19,6 @@ public interface AccommodationDao {
     Image addImage(Image image);
     List<Accommodation> fetchUserAccommodation(String username);
     void setAccommodationOrder(Order order);
+    Order getOrderById(Integer orderId);
+    void updateOrderStatus(Order order);
 }

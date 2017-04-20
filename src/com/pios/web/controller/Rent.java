@@ -1,6 +1,8 @@
 package com.pios.web.controller;
 
+import com.pios.persistence.model.Order;
 import com.pios.persistence.model.User;
+import com.pios.service.AccommodationService;
 import com.pios.service.IUserService;
 import com.pios.web.dto.UserInfoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
@@ -26,48 +29,97 @@ public class Rent{
     @Qualifier("userService")
     IUserService userService;
 
+    @Autowired
+    @Qualifier("accommodationService")
+    AccommodationService accommodationService;
+
 
     @GetMapping("/rent/{orderId}")
     @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_ADMIN')")
-    public String openRent(@PathVariable int orderId, Model model, Principal principal){
+    public String openRent(@PathVariable Integer orderId, Model model, Principal principal){
 
         User user = userService.getUserByUsername(principal.getName());
 
         UserInfoDTO userInfoDTO = new UserInfoDTO();
 
-        convertUserToUserDTO(user, userInfoDTO);
+        userInfoDTO = convertUserToUserDTO(user, userInfoDTO);
 
         model.addAttribute("userInfo", userInfoDTO);
+        model.addAttribute("orderID", orderId);
 
         return "rent";
     }
 
-    private void convertUserToUserDTO(User user, UserInfoDTO userInfoDTO) {
-        userInfoDTO.setName(user.getUserInfo().getName());
-        userInfoDTO.setSurname(user.getUserInfo().getSurname());
-        userInfoDTO.setBirthDate(user.getUserInfo().getBirthDate());
-        userInfoDTO.setCityTown(user.getUserInfo().getCityTown());
-        userInfoDTO.setPostalCode(user.getUserInfo().getPostalCode());
-        userInfoDTO.setStreetName(user.getUserInfo().getStreetName());
-        userInfoDTO.setStreetNumber(user.getUserInfo().getStreetNumber());
-        userInfoDTO.setPhone(user.getUserInfo().getPhone());
-        userInfoDTO.setCellPhone(user.getUserInfo().getCellPhone());
-        userInfoDTO.setUserInfoId(user.getUserInfo().getUserInfoId());
-        userInfoDTO.setUsername(user.getUsername());
-    }
-
-    @PostMapping
+    @PostMapping("/rent/confirm")
     @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_ADMIN')")
-    public void rentAccommodation(BindingResult result,
-                                  WebRequest request, Errors errors) {
+    public ModelAndView rentAccommodation(@ModelAttribute("userInfo") @Valid UserInfoDTO userInfo, BindingResult result,
+                                          WebRequest request, Errors errors, Principal principal) {
+
+        Integer orderId = Integer.parseInt(request.getParameter("orderId"));
+
+        Order order = accommodationService.getOrderById(orderId);
+        order.setUsername(principal.getName());
+        order.setReserved(true);
 
         if (result.hasErrors()) {
-//
+            //vrati ga na stranicu i reci da nekaj nevalja
+            for (Object object : result.getAllErrors()) {
+                if(object instanceof FieldError) {
+                    FieldError fieldError = (FieldError) object;
+
+                    System.out.println(fieldError.getCode());
+                }
+
+                if(object instanceof ObjectError) {
+                    ObjectError objectError = (ObjectError) object;
+
+                    System.out.println(objectError.getCode());
+                }
+            }
+            return new ModelAndView("redirect:/error");
         } else {
-//
-            // return "redirect:/login";
+            accommodationService.saveOrderandUpdateUserInfo(order, userInfo);
+            //spremi narudbu, podatke korisnika
+            return new ModelAndView("redirect:/profile");
         }
 
+    }
+
+
+    private UserInfoDTO convertUserToUserDTO(User user, UserInfoDTO userInfoDTO) {
+
+        if(user.getUserInfo().getName() != null){
+            userInfoDTO.setName(user.getUserInfo().getName());
+        }
+        if(user.getUserInfo().getSurname() != null){
+            userInfoDTO.setSurname(user.getUserInfo().getSurname());
+        }
+        if(user.getUserInfo().getBirthDate() != null){
+            userInfoDTO.setBirthDate(user.getUserInfo().getBirthDate());
+        }
+        if(user.getUserInfo().getCityTown() != null){
+            userInfoDTO.setCityTown(user.getUserInfo().getCityTown());
+        }
+        if(user.getUserInfo().getPostalCode() != null){
+            userInfoDTO.setPostalCode(user.getUserInfo().getPostalCode());
+        }
+        if(user.getUserInfo().getStreetName() != null){
+            userInfoDTO.setStreetName(user.getUserInfo().getStreetName());
+        }
+        if(user.getUserInfo().getStreetNumber() != null){
+            userInfoDTO.setStreetNumber(user.getUserInfo().getStreetNumber());
+        }
+        if(user.getUserInfo().getPhone() != null){
+            userInfoDTO.setPhone(user.getUserInfo().getPhone());
+        }
+        if(user.getUserInfo().getCellPhone() != null){
+            userInfoDTO.setCellPhone(user.getUserInfo().getCellPhone());
+        }
+
+        userInfoDTO.setUserInfoId(user.getUserInfo().getUserInfoId());
+        userInfoDTO.setUsername(user.getUsername());
+
+        return userInfoDTO;
     }
 
 }

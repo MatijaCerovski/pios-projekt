@@ -3,6 +3,7 @@ package com.pios.persistence.dao;
 import com.pios.persistence.model.User;
 import com.pios.persistence.model.UserRole;
 import com.pios.persistence.model.UsersInfo;
+import com.pios.web.dto.UserInfoDTO;
 import com.pios.web.dto.UserRegistrationDTO;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -84,6 +85,11 @@ public class UserDaoImpl implements UserDao {
         List<User> users = new ArrayList<>();
         users = sessionFactory.getCurrentSession().createCriteria(User.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
         return users;
+    }
+
+    @Override
+    public void updateUserInfo(UserInfoDTO userInfo) {
+        sessionFactory.getCurrentSession().update(userInfo);
     }
 
 }
