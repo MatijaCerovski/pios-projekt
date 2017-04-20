@@ -6,7 +6,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  * Created by Matija on 19.4.2017..
@@ -54,6 +55,7 @@ public class UserInfoDTO {
     @NotEmpty
     @Size(max = 45)
     private String username;
+
 
     public UserInfoDTO() {
     }
@@ -130,11 +132,11 @@ public class UserInfoDTO {
         this.cellPhone = cellPhone;
     }
 
-    public int getUserInfoId() {
+    public Integer getUserInfoId() {
         return userInfoId;
     }
 
-    public void setUserInfoId(int userInfoId) {
+    public void setUserInfoId(Integer userInfoId) {
         this.userInfoId = userInfoId;
     }
 
@@ -145,5 +147,4 @@ public class UserInfoDTO {
     public void setUsername(String username) {
         this.username = username;
     }
-
 }

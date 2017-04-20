@@ -5,10 +5,8 @@ import com.pios.persistence.model.UserRole;
 import com.pios.persistence.model.UsersInfo;
 import com.pios.web.dto.UserInfoDTO;
 import com.pios.web.dto.UserRegistrationDTO;
-import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
-import org.hibernate.Hibernate;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -89,7 +87,39 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updateUserInfo(UserInfoDTO userInfo) {
-        sessionFactory.getCurrentSession().update(userInfo);
+
+        Session session = sessionFactory.getCurrentSession();
+
+        Query query = session.createQuery("update UsersInfo set name = :name, " +
+                "surname = :surname, " +
+                "birthDate = :birthDate, " +
+                "cityTown = :cityTown, " +
+                "postalCode = :postalCode, " +
+                "streetName = :streetName, " +
+                "streetNumber = :streetNumber, " +
+                "phone = :phone, " +
+                "cellPhone = :cellPhone" +
+                " where userInfoId = :userInfoId");
+
+
+
+        query.setParameter("name", userInfo.getName());
+        query.setParameter("surname", userInfo.getSurname());
+        query.setParameter("birthDate", userInfo.getBirthDate());
+        query.setParameter("cityTown", userInfo.getCityTown());
+        query.setParameter("postalCode", userInfo.getPostalCode());
+        query.setParameter("streetName", userInfo.getStreetName());
+        query.setParameter("streetNumber", userInfo.getStreetNumber());
+        if(userInfo.getPhone() != null){
+            query.setParameter("phone", userInfo.getPhone());
+        }else{
+            query.setParameter("phone", 0);
+        }
+        query.setParameter("cellPhone", userInfo.getCellPhone());
+
+
+        query.setParameter("userInfoId", userInfo.getUserInfoId());
+        int result = query.executeUpdate();
     }
 
 }

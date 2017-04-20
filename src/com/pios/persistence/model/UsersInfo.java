@@ -1,7 +1,8 @@
 package com.pios.persistence.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  * Created by Matija on 19.4.2017..

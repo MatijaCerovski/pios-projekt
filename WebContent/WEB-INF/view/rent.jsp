@@ -54,7 +54,7 @@
                         <label for="postalCode" class="pull-right">Poštanski broj:</label>
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <form:input path="postalCode" type="number" class="form-control" id="postalCode" value="${userInfo.postalCode}" required="required" maxlength="5"/>
+                        <form:input path="postalCode" type="text" class="form-control" id="postalCode" value="${userInfo.postalCode}" required="required" maxlength="5"/>
                     </div>
                 </div>
 

@@ -5,6 +5,8 @@ import com.pios.persistence.model.Image;
 import com.pios.persistence.model.Order;
 import com.pios.web.dto.AccommodationDTO;
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +81,17 @@ public class AccommodationDaoImpl implements AccommodationDao {
 
     @Override
     public void updateOrderStatus(Order order) {
-        sessionFactory.getCurrentSession().update(order);
+
+        Session session = sessionFactory.getCurrentSession();
+
+        Query query = session.createQuery("update Order set username = :username, reserved = :reserved" +
+                " where orderId = :orderId");
+        query.setParameter("username", order.getUsername());
+        query.setParameter("reserved", order.getReserved());
+        query.setParameter("orderId", order.getOrderId());
+        int result = query.executeUpdate();
+
+
     }
 
 
