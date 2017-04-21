@@ -5,5 +5,6 @@ var url = 'http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.financ
 var omjer;
 $.get(url, function (data) {
     omjer = data.query.results.rate.Rate;
-    alert( "success, Omjer kn:eur = " + omjer);
+
+    $("#price").html(($("#priceInput").attr("value") * omjer).toFixed(2));
 });

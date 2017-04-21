@@ -13,6 +13,19 @@
             <form:form action="confirm" modelAttribute="userInfo" method="POST">
                 <h1>Podatci</h1>
 
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <label class="pull-right">Cijena smještaja:</label>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <input type="hidden" id="priceInput" value="${order.price}"/>
+                        <label id="price">Nemam podatak</label>
+                        <label> € </label>
+                    </div>
+
+                </div>
+
                 <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                         <label for="name" class="pull-right">Ime:</label>

@@ -44,8 +44,11 @@ public class Rent{
 
         userInfoDTO = convertUserToUserDTO(user, userInfoDTO);
 
+        Order order = accommodationService.getOrderById(orderId);
+
         model.addAttribute("userInfo", userInfoDTO);
         model.addAttribute("orderID", orderId);
+        model.addAttribute("order", order);
 
         return "rent";
     }

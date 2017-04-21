@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.Date;
 
@@ -32,7 +33,7 @@ public class DateController {
     @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_ADMIN')")
     public String dodajDatumSmjestaja(@RequestParam("from") Date from, @RequestParam("to") Date to,
                                       @RequestParam("accommodationId") int accommodationId,
-                                      @RequestParam("price") int price){
+                                      @RequestParam("price") BigDecimal price){
 
 
         Accommodation accommodation = new Accommodation();

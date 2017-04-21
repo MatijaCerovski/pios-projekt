@@ -3,6 +3,7 @@ package com.pios.persistence.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ public class Order {
     private Date startDate;
     private Date endDate;
     private Boolean reserved;
-    private int price;
+    private BigDecimal price;
     private String username;
     private Accommodation accommodation;
 
@@ -76,11 +77,11 @@ public class Order {
 
     @Basic
     @Column(name = "price")
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
