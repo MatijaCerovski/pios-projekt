@@ -62,7 +62,36 @@
     </table>
     <hr>
     <h1>Your reservations</h1>
+    <table id="orders">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Price</th>
+            <th>Submit</th>
+        </tr>
 
+        </thead>
+        <tbody>
+        <c:forEach items="${orders}" var="order">
+            <tr>
+                <form action="/cancle/reservation" method="post">
+                    <td>${order.orderId}</td>
+                    <td>${order.username}</td>
+                    <td>${order.startDate}</td>
+                    <td>${order.endDate}</td>
+                    <td>${order.price}</td>
+                    <td><input type="submit" value="Cancle reservation"></td>
+
+                    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+                </form>
+            </tr>
+        </c:forEach>
+        </tbody>
+
+    </table>
 
 </div>
 

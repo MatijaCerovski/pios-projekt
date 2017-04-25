@@ -88,6 +88,12 @@ public class AccommodationServiceImpl implements AccommodationService {
 
     @Transactional
     @Override
+    public List<Order> fetchUserOrders(String username) {
+        return accommodationDao.fetchUserOrders(username);
+    }
+
+    @Transactional
+    @Override
     public void setAccommodationOrder(Order order) {
         accommodationDao.setAccommodationOrder(order);
     }

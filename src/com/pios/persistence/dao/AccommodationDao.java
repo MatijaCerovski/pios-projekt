@@ -21,4 +21,6 @@ public interface AccommodationDao {
     void setAccommodationOrder(Order order);
     Order getOrderById(Integer orderId);
     void updateOrderStatus(Order order);
+
+    List<Order> fetchUserOrders(String username);
 }

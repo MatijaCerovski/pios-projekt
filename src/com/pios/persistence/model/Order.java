@@ -65,7 +65,7 @@ public class Order {
     }
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "accommodation_id", referencedColumnName = "accommodation_id", nullable = false)
     public Accommodation getAccommodation() {
         return accommodation;

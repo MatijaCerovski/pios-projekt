@@ -16,6 +16,7 @@ public interface AccommodationService {
     Accommodation getAccommodation(int accommodationId);
     List<Accommodation> fetchAllAccommodations();
     List<Accommodation> fetchUserAccommodation(String username);
+    List<Order> fetchUserOrders(String username);
     void setAccommodationOrder(Order order);
     Order getOrderById(Integer orderId);
     void saveOrderandUpdateUserInfo(Order order,UserInfoDTO userInfo);

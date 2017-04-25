@@ -27,6 +27,7 @@ public class Profile {
     public String openProfile(Model model, Principal principal){
 
         model.addAttribute("accommodations",accommodationService.fetchUserAccommodation(principal.getName()));
+        model.addAttribute("orders", accommodationService.fetchUserOrders(principal.getName()));
 
         return "profile";
     }

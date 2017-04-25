@@ -94,5 +94,13 @@ public class AccommodationDaoImpl implements AccommodationDao {
 
     }
 
+    @Override
+    public List<Order> fetchUserOrders(String username) {
+        List<Order> orders = sessionFactory.getCurrentSession().createQuery("from Order where username=?").setParameter(0, username)
+                .list();
+
+        return orders;
+    }
+
 
 }
